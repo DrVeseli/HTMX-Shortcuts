@@ -8,6 +8,8 @@ func routes() http.Handler {
 
 	// Define routes
 	mux.HandleFunc("/", homeHandler)
-	mux.HandleFunc("/style", styleHandler)
+
+	fs := http.FileServer(http.Dir("static"))
+	mux.Handle("/static/", http.StripPrefix("/static/", fs))
 	return mux
 }

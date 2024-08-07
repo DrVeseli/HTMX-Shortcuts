@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"embed"
 	"log/slog"
 	"net/http"
 	"os"
@@ -12,16 +11,14 @@ import (
 	"time"
 )
 
-//go:embed templates/*
-var templates embed.FS
-
 var (
 	tmpl *template.Template
 	err  error
 )
 
 func init() {
-	tmpl, err = template.ParseFS(templates, "templates/*")
+	// Parse all .html files in the "src" directory
+	tmpl, err = template.ParseFS(os.DirFS("src"), "*.html")
 	if err != nil {
 		slog.Error("Error parsing templates: %v", "Error:", err)
 	}

@@ -2,8 +2,8 @@
 
 # Define variables
 TAILWIND_CMD = ./tailwindcss
-INPUT_FILE = ./templates/input.css
-OUTPUT_FILE = ./templates/output.css
+INPUT_FILE = ./static/input.css
+OUTPUT_FILE = ./static/output.css
 AIR_CMD = air -c .air.toml
 
 # Target to start Tailwind CSS in watch mode
